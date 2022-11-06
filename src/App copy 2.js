@@ -31,17 +31,11 @@ class App extends Component {
     }
     return (
       <div className="App">
-        <Subject 
+        {/* <Subject 
           title={this.state.subject.title} 
-          sub={this.state.subject.sub}
-            onChangePage={function(){ //17.1강.
-              this.setState({mode:'welcome'});
-            }.bind(this)}
-            >
-        </Subject>
-
-
-         {/* <header> //17.1강에서 비활성화 함.
+          sub={this.state.subject.sub}>
+        </Subject> */}
+         <header> 
             <h1><a href="/" onClick={function(e){
               console.log(e);
               e.preventDefault(); //<a href="/" 의 기능 막는 것. 
@@ -54,8 +48,7 @@ class App extends Component {
 // {function(e){ 안에서 this가 되게 한다. 16.4강. 첨.
             }.bind(this)}>{this.state.subject.title}</a></h1>
                  {this.state.subject.sub}
-        </header>   */}
-
+        </header>  
         <TOC data={this.state.contents}></TOC>
         <Content title={_title} desc={_desc}></Content>
       </div>
