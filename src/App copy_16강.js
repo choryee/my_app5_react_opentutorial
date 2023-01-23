@@ -12,18 +12,19 @@ class App extends Component {
  //보다 먼저 실행되어. 초기화할때는  constructor에 그 값을 넣는다.[]는 배열 의미
  //App이라는 부모는 state를 만들었고, 자식이 그것을 받을때는 props로 받는다.
  this.state={
-  mode:'read',
+   mode:'read',
    subject:{title:'WEB', sub:'world best,kim'},
    welcome:{title:'welcome', desc:'Hello, React!!!!'},
    content: [ 
       {id:1, title:'HTML', desc: 'HTML배열사용 is Hyper....'},
       {id:2, title:'CSS', desc: 'CSS is design'},
-      {id:1, title:'JavaScript', desc: 'JavaScript is for interactive'}
+      {id:3, title:'JavaScript', desc: 'JavaScript is for interactive'}
    ] //-
  } //--this.state 
   }//--constructor
 
   render() {
+    
     // 16.1강
     console.log('App render');
     var _title, _desc=null;
@@ -48,18 +49,21 @@ class App extends Component {
             <h1><a href="/" onClick={function(e){
               console.log(e);
               e.preventDefault(); //<a href="/" 의 기능 막는 것. 
-             // this.state.mode='welcome'; <-이처럼 맨 위 생성자로 변수등을 변경해야지, 위 생성자가
-             //생성후, 바로 위 줄처럼 변경하면 안된다. 하려면, 밑처럼 setState()함수 써야. 16.5강.
-             this.setState({
+             // this.state.mode='welcome'; <-맨위 생성자가
+             //생성후에는 밑처럼 변경해야지, 위 생성자가
+             //생성후, 바로 위 줄처럼 변경하면 안된다. 하려면, 밑처럼 setState()함수 써야. 16-5강.
+             this.setState({ //16-3강, 5강
               mode:'welecome'              
              });
 //밑 bind는 {function(e){에서 this가 undefined이지만, 강제로 App의 this를
-// {function(e){ 안에서 this가 되게 한다. 16.4강. 첨.
+// {function(e){ 안에서 this가 되게 한다. 16.4강. 첨. 16-4강 뒤에 예시코드도 있음.
             }.bind(this)}>{this.state.subject.title}</a></h1>
                  {this.state.subject.sub}
         </header>  
         -------------------------------------------------------- 
-        <TOC data={this.state.content}></TOC>
+  
+        <TOC data={this.state.content}></TOC> 
+        
         <Content title={_title} desc={_desc}></Content>
       </div>
     );
